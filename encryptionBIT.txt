@@ -1,0 +1,83 @@
+
+
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int *single(int n){
+    int *buffer=(int*)malloc(8*sizeof(int));
+   //int buffer[7];
+    int k;
+    for(int i=8;i>=0;i--){
+    k=n>>i;
+    if(k&1){
+        buffer[i]=1;
+    }
+    else{
+        buffer[i]=0;
+    }
+}
+ for(int i=8;i>=1;i--){
+    printf("  %d",buffer[i-1]);
+    }
+  return buffer;
+}
+
+int *encrypt(char *str){
+    int *a=malloc(strlen(str-1)*4);
+    for(int i=0;i<strlen(str)-1;i++){
+        a[i]=str[i];
+         printf(" %d ",a[i]);
+    }
+    printf(" \n \n");
+   return a;
+    //printf("\n Entered  character is: %d  %d\n",a[0],a[1]);
+}
+
+int main() {
+    // Write C code here
+   char *name=malloc(1);
+   
+   int abc=1; int final;
+   
+   printf(" Enter a string: ");
+   getline(&name,&abc,stdin);
+ 
+   printf("\n Entered  name is: %s \n",name);
+    encrypt(name);
+    
+    int subbuff[strlen(name)-1];
+    for(int f=0;f<strlen(name)-1;f++){
+        
+     printf("--- %d \n",sizeof(subbuff)/4);
+    
+    
+   
+  int *ptr=single(65);
+   printf(" \n ");
+   int buffer[8]; int left[4],right[4];
+   int res[4];
+   for(int i=7;i>=0;i--){
+       buffer[i]=*ptr;
+       printf("--- %d ",buffer[i]);
+       ptr++;
+   }
+    for(int i=0;i<4;i++){
+       res[i]=buffer[7-i]|buffer[i];
+       printf("\n RES   is: %d\n",res[i]);
+    }
+   
+    if(res[0]==1) final+=res[0];
+     if(res[1]==1) final+=res[1];
+   if(res[2]==1) final+=res[2];
+   if(res[3]==1) final+=res[3];
+
+}
+printf("\n FINA   is: %d\n",final/1);
+   
+    free(name);
+
+    
+    return 0;
+}
